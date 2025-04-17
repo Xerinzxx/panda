@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panda Paradise</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/lucide@1.0.0/dist/lucide.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+    }
+    .panda-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .card:hover .panda-img {
+      transform: scale(1.03);
+    }
+    .header-bg {
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <!-- Beautiful Header -->
+  <header class="header-bg text-white shadow-lg">
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex flex-col md:flex-row items-center justify-center md:justify-between text-center md:text-left">
+        <div class="flex items-center space-x-6 mb-6 md:mb-0">
+          <img src="Panda_1.jpg" alt="Panda Icon" class="w-20 h-20 rounded-full border-4 border-white shadow-lg">
+          <div>
+            <h1 class="text-4xl font-bold" style="font-family: 'Pacifico', cursive">Panda Paradise &#128060; </h1>
+            <p class="text-blue-100 mt-1">Where cuteness meets bamboo!</p>
+          </div>
+        </div>
+        <div class="flex space-x-4">
+          <button class="px-4 py-2 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition">
+              <a href="https://www.wwf.org.uk/learn/fascinating-facts/pandas">About Pandas &#128060; </a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow container mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-800 mb-2">Adorable Panda &#128060; Collection</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Browse through our collection of our adorable pandas &#128060;. Each one is cuter than the last!</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="panda-grid">
+      <!-- Panda cards will be generated here -->
+    </div>
+  </main>
+
+  <!-- Beautiful Footer -->
+  <footer class="bg-gray-800 text-white py-12 mt-12">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0">
+          <div class="flex items-center space-x-4">
+            <img src="Panda_1.jpg" alt="Panda Logo" class="w-12 h-12 rounded-full">
+            <h3 class="text-2xl font-bold" style="font-family: 'Pacifico', cursive">Panda &#128060; Paradise</h3>
+          </div>
+          <p class="text-gray-400 mt-2">Celebrating the beauty of pandas &#128060; </p>
+        </div>
+        <div class="grid grid-cols-2 gap-8">
+          <div>
+            <h4 class="text-lg font-semibold mb-3">Quick Links</h4>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-gray-400 hover:text-white transition"> Home &#127969; </a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition"> About &#128070; </a></li>
+            </ul>
+          </div>
+          <div>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+        <p>© 2025 Panda &#128060; Paradise. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lucide Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@1.0.0/dist/lucide.min.js"></script>
+
+  <script>
+    function generatePandaCards() {
+      const grid = document.getElementById('panda-grid');
+      grid.innerHTML = '';
+      
+      for (let i = 1; i <= 48; i++) {
+        const imageName = `Panda_${i}.jpg`;
+        
+        const card = document.createElement('div');
+        card.className = 'card group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow';
+        card.innerHTML = `
+          <div class="relative overflow-hidden">
+            <img src="${imageName}" alt="Panda ${i}" class="panda-img">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <h3 class="text-white font-semibold text-lg">Panda ${i}</h3>
+            </div>
+          </div>
+          <div class="p-4 flex justify-end">
+            <a href="${imageName}" download 
+              class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+            >
+              <i data-lucide="download" class="w-4 h-4 mr-2"></i>
+              Download
+            </a>
+          </div>
+        `;
+        
+        grid.appendChild(card);
+      }
+      
+      // Initialize Lucide icons
+      lucide.createIcons();
+    }
+
+    // Generate cards when page loads
+    window.addEventListener('DOMContentLoaded', generatePandaCards);
+  </script>
+</body>
+</html>
